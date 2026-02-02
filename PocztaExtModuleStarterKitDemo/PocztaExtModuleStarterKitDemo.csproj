@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project Sdk="Soneta.Sdk">
+  <PropertyGroup>
+    <TargetFramework>$(SonetaTargetFramework)</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="PocztaExt.business.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Soneta.Generator" Version="13.0.2" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Update="Soneta.Products.Modules" Version="2406.2.5" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Generator\" />
+    <Folder Include="Generator\" />
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="Remove-Item -Path &quot;C:\SonetaAddons\SonetaPlatformDevelopmentDemo.dll&quot; /Y&#xD;&#xA;xcopy &quot;$(TargetPath)&quot; &quot;C:\SonetaAddons\&quot; /Y" />
+  </Target>
+</Project>
